@@ -8,6 +8,8 @@ data DFA a
   finals :: a -> Bool 
 }
 
+
+-- endsWithOne é um valor, objeto
 endsWithOne :: DFA Bool
 endsWithOne = DFA False transition id
   where
@@ -17,8 +19,10 @@ endsWithOne = DFA False transition id
     transition True '1' = True
     transition _ _ = False
 
+-- returns ef or not
+deltaStar :: DFA a -> String -> a 
+deltaStar m = foldl (delta m) (start m) -- delta do dfa m, start do dfa m
 
--- IA function
-runDFA :: DFA a -> String -> Bool
-runDFA dfa input = finals dfa (foldl (delta dfa) (start dfa) input)
--- end IA functions
+-- testa se o estado retornado é final
+accept :: DFA a -> String -> Bool
+accept m s = finals m (deltaStar m s) 
