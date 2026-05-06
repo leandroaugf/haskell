@@ -17,7 +17,7 @@ main = do
     putStrLn $ describeStart "Lists"
 
     putStrLn ("numeric character of letter a: " ++ show (ord 'a'))
-    putStrLn ("alpha character of number 97: " ++ print (chr 97))
+    putStrLn ("alpha character of number 97: " ++ [chr 97])
 
     print (ord 'a')
     print (chr 97)
